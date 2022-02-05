@@ -2,15 +2,13 @@ const fetchData = async (searchTerm) => {
     const response = await axios.get("http://www.omdbapi.com/", {
         params: {
             apikey: "33c74cdf",
-            s: searchTerm // axios allows you to include parameters in the second argument. instead of extension 
-            // If using the fetch method, you'll need to include the direct URL via "?[keyObject]=[value]&". 
-            // i.e http://www.omdbapi.com/?apikey=33c74cdf&s=avenger
-            // At developer tool of Browser, find the URL by via Network > Fetch/XHR > fetched parameter > Header.
+            s: searchTerm
         }
     });
 
     console.log(response.data)
 };
+
 
 const input = document.querySelector("input");
 
@@ -22,10 +20,10 @@ const debounce = (callback, delay) => {
         }
         timeoutId = setTimeout(() => {
             callback.apply(null, arguments)}, 
-            // apply, calls function & takes all arguments & pass them as separate arguments to original function. 
+            // "apply" calls function & takes all arguments & pass them as separate arguments to original function. 
             delay);
-    }; // this function will be acting as the shield. a.k.a wrapper
-}
+    }; // this acts as the shield. a.k.a wrapper that only allows the last input by user after the set time is up. 
+} // Refactored the timeout function in the case we want to recall its use more than once.
 
 const onInput = (event) => {
     fetchData(event.target.value);
