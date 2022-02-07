@@ -6,27 +6,18 @@ const fetchData = async (searchTerm) => {
         }
     });
 
-    console.log(response.data)
+    return response.data.Search;
 };
 
 
 const input = document.querySelector("input");
 
-const debounce = (callback, delay) => {
-    let timeoutId;
-    return (...arguments) => {
-        if (timeoutId) {
-            clearTimeout(timeoutId);
-        }
-        timeoutId = setTimeout(() => {
-            callback.apply(null, arguments)}, 
-            // "apply" calls function & takes all arguments & pass them as separate arguments to original function. 
-            delay);
-    }; // this acts as the shield. a.k.a wrapper that only allows the last input by user after the set time is up. 
-} // Refactored the timeout function in the case we want to recall its use more than once.
 
-const onInput = (event) => {
-    fetchData(event.target.value);
+const onInput = async (event) => { 
+    const movies = await fetchData(event.target.value); 
+    // Because fetchData is an async func, need to add 'await' keyword. 
+    // If not, promise will remain pending.
+    console.log(movies);
     };
 
 input.addEventListener("input", debounce(onInput, 500));
