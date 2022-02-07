@@ -6,6 +6,10 @@ const fetchData = async (searchTerm) => {
         }
     });
 
+    if (response.data.Error) {
+        return [];
+    }
+
     return response.data.Search;
 };
 
@@ -15,9 +19,16 @@ const input = document.querySelector("input");
 
 const onInput = async (event) => { 
     const movies = await fetchData(event.target.value); 
-    // Because fetchData is an async func, need to add 'await' keyword. 
-    // If not, promise will remain pending.
-    console.log(movies);
+    
+    for (let movie of movies) {
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <img src="${movie.Poster}"/>
+            <h1>${movie.Title}</h1>
+        `; // using back ticks so we can have multi-line String
+        document.querySelector("#target").appendChild(div);
+    }
     };
 
 input.addEventListener("input", debounce(onInput, 500));
