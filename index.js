@@ -103,7 +103,7 @@ const movieTemplate = (movieDetail) => {
     }, 0);
 
     return `
-        <article class="media>
+        <article class="media">
             <figure class="media-left">
                 <p class="image">
                     <img src="${movieDetail.Poster}" />
@@ -117,6 +117,7 @@ const movieTemplate = (movieDetail) => {
                 </div>
             </div>
         </article>
+        
         <article data-value=${awards} class="notification is-primary">
             <p class="title">${movieDetail.Awards}</p>
             <p class="subtitle">Awards</p>
