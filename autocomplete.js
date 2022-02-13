@@ -10,8 +10,7 @@ const createAutoComplete = ({
     <input class="input" />
     <div class="dropdown">
         <div class="dropdown-menu">
-            <div class="dropdown-content results">
-            </div>
+            <div class="dropdown-content results"></div>
         </div>
     </div>
 `;
