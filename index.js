@@ -91,6 +91,7 @@ const movieTemplate = (movieDetail) => {
     const imdbRating = Number(movieDetail.imdbRating).toFixed();
     const imdbVotes = Number(movieDetail.imdbVotes.replace(/,/g,""));
     
+    
     let count = 0;
     const awards = movieDetail.Awards.split(" ").reduce((prev, word) => {
         const value = Number(word);
@@ -140,3 +141,4 @@ const movieTemplate = (movieDetail) => {
         </article>
     `;    
 };
+console.log("Hello World!");
